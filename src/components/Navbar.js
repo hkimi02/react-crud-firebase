@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import HomeIcon from '@mui/icons-material/Home'
 import InfoIcon from '@mui/icons-material/Info'
 import '../style/navbar.css'
+import AddIcon from '@mui/icons-material/Add'
 function Navbar() {
   return (
     <AppBar position="static">
@@ -17,7 +18,7 @@ function Navbar() {
             <HomeIcon />
           </Link>
           <Link to="/about" className="link">
-            <InfoIcon />
+            <AddIcon />
           </Link>
         </Typography>
       </Toolbar>

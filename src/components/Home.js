@@ -1,8 +1,18 @@
 import { useState, useEffect } from 'react'
 import { db } from '../firebase-config'
 import { collection, getDocs } from 'firebase/firestore'
-import { CardContent, CardHeader, Grid, Typography } from '@mui/material'
+import {
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Grid,
+  Typography,
+} from '@mui/material'
 import { Card } from '@mui/material'
+import DeleteIcon from '@mui/icons-material/Delete'
+import Button from '@mui/material/Button'
+import CreateIcon from '@mui/icons-material/Create'
 function Home() {
   const [users, setUsers] = useState([])
   const UserCollectionRef = collection(db, 'users')
@@ -37,6 +47,14 @@ function Home() {
                     <h4>Name : {user.name}</h4>
                     <h4>age : {user.age}</h4>
                   </CardContent>
+                  <CardActions>
+                    <Button variant="text" sx={{ color: 'red' }}>
+                      <DeleteIcon />
+                    </Button>
+                    <Button variant="text" sx={{ color: 'orange' }}>
+                      <CreateIcon />
+                    </Button>
+                  </CardActions>
                 </Card>
               </Grid>
             ))}
