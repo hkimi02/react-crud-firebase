@@ -6,6 +6,7 @@ import { Card } from '@mui/material'
 import Navbar from './components/Navbar'
 import About from './components/about'
 import Home from './components/Home'
+import UpdateUser from './components/UpdateUser'
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home></Home>} exact />
           <Route path="/about" element={<About></About>} />
+          <Route exact path="/update/:id" element={<UpdateUser></UpdateUser>} />
         </Routes>
       </div>
     </Router>

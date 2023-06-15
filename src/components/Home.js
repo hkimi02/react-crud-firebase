@@ -18,6 +18,7 @@ import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
+import { Link } from 'react-router-dom'
 function Home() {
   const [users, setUsers] = useState([])
   const UserCollectionRef = collection(db, 'users')
@@ -80,9 +81,11 @@ function Home() {
                     >
                       <DeleteIcon />
                     </Button>
-                    <Button variant="text" sx={{ color: 'orange' }}>
-                      <CreateIcon />
-                    </Button>
+                    <Link to={`/update/${user.id}`} className="link">
+                      <Button variant="text" sx={{ color: 'orange' }}>
+                        <CreateIcon />
+                      </Button>
+                    </Link>
                   </CardActions>
                 </Card>
               </Grid>
