@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { db } from '../firebase-config'
 import { deleteDoc, collection, getDocs, doc } from 'firebase/firestore'
 import {
-  CardActionArea,
   CardActions,
   CardContent,
   CardHeader,
@@ -53,7 +52,7 @@ function Home() {
   return (
     <div>
       <h1>list persons</h1>
-      <div class="users">
+      <div className="users">
         <div>
           <Grid container>
             {users.map((user) => (
