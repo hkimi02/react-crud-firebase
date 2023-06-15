@@ -1,15 +1,21 @@
 import { Button, Container, TextField, Typography } from '@mui/material'
 import react, { useState } from 'react'
-
+import { db } from '../firebase-config'
+import { collection, addDoc } from 'firebase/firestore'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 function About() {
   const [name, setName] = useState('')
   const [age, setAge] = useState('')
-
-  const handleSubmit = (e) => {
+  const navigate = useNavigate()
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Name:', name)
-    console.log('Age:', age)
+    const docRef = await addDoc(collection(db, 'users'), {
+      name: name,
+      age: age,
+    })
+    setName('')
+    setAge('')
+    navigate('/', { replace: true })
   }
 
   return (
