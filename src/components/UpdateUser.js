@@ -8,8 +8,6 @@ import { useNavigate } from 'react-router-dom'
 function UpdateUser() {
   const { id } = useParams()
   let [user, setUser] = useState({})
-  let [oldName, setOldName] = useState('')
-  let [oldAge, setOldAge] = useState('')
   let [newName, setNewName] = useState('')
   let [newAge, setNewAge] = useState('')
   const navigate = useNavigate()
@@ -18,8 +16,8 @@ function UpdateUser() {
       const data = await getDoc(doc(db, 'users', id))
       console.log(data)
       setUser({ ...data.data(), id: data.id })
-      setOldName(user.name)
-      setOldAge(user.age)
+      setNewName(user.name)
+      setNewAge(user.age)
     }
     getUser()
   }, [id, user.name, user.age])
@@ -31,14 +29,14 @@ function UpdateUser() {
     <div>
       <Container maxWidth="sm" sx={{ marginTop: '40px' }}>
         <Typography variant="h4" align="center" gutterBottom>
-          update {oldName}
+          update {newName}
         </Typography>
         <form onSubmit={handleSubmit}>
           <TextField
             label="Name"
             variant="outlined"
             fullWidth
-            value={oldName}
+            value={newName}
             onChange={(e) => setNewName(e.target.value)}
             margin="normal"
           />
@@ -46,7 +44,7 @@ function UpdateUser() {
             label="Age"
             variant="outlined"
             fullWidth
-            value={oldAge}
+            value={newAge}
             onChange={(e) => setNewAge(e.target.value)}
             margin="normal"
           />
